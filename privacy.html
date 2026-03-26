@@ -1,32 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Privacy Policy - bl1nk-note</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - bl1nkOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-primary: #050505;
+            --black-secondary: #0a0a0a;
+            --platinum: #fafafa;
+            --warm-grey: #888888;
+            --accent-teal: #5eead4;
+            --glass-border: rgba(255,255,255,0.08);
+            --metallic-border: double 1.5px transparent; /* หนาเป็น 1.5 เท่าของขอบปกติ */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Geist', sans-serif;
+            background: var(--black-primary);
+            color: var(--platinum);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Noise & Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            z-index: 0;
+        }
+
+        /* Container Style (Shadcn Mira vibe) */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            width: 90%;
+            margin: 120px 0;
+            padding: 60px;
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        p, li {
+            color: var(--warm-grey);
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--accent-teal);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+        }
+
+        /* Metallic Button Custom Style */
+        .btn-contact {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 32px;
+            background: var(--black-secondary);
+            color: var(--platinum);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 0.5rem; /* ปรับกลมตามสั่ง */
+            
+            /* Metallic Border: หนาเป็น 1.5 เท่าของขอบการ์ด */
+            border: 1.5px solid transparent; 
+            background-image: linear-gradient(var(--black-secondary), var(--black-secondary)), 
+                              linear-gradient(135deg, #444, #fff, #444);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            background-image: linear-gradient(var(--black-secondary), var(--black-secondary)), 
+                              linear-gradient(135deg, var(--accent-teal), #fff, var(--accent-teal));
+            box-shadow: 0 0 20px rgba(94, 234, 212, 0.2);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px;
+            font-size: 12px;
+            color: #444;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
+    <div class="grid-bg"></div>
 
-  <p>
-    bl1nk-note respects your privacy. We only collect the minimum data
-    necessary to provide core app functionality.
-  </p>
+    <main class="container">
+        <h1>Privacy Policy</h1>
+        <p>
+            bl1nkOS respects your privacy. We only collect the minimum data
+            necessary to provide core app functionality.
+        </p>
 
-  <h2>Information We Collect</h2>
-  <ul>
-    <li>Basic account information (if sign-in is enabled)</li>
-    <li>App usage data for improving performance</li>
-  </ul>
+        <h2>Information We Collect</h2>
+        <ul>
+            <li>Basic account information (if sign-in is enabled)</li>
+            <li>App usage data for improving performance</li>
+        </ul>
 
-  <h2>How We Use Information</h2>
-  <ul>
-    <li>To operate and maintain the application</li>
-    <li>To improve user experience</li>
-  </ul>
+        <h2>How We Use Information</h2>
+        <ul>
+            <li>To operate and maintain the application</li>
+            <li>To improve user experience</li>
+        </ul>
 
-  <h2>Contact</h2>
-  <p>
-    If you have any questions, contact us at: support@bl1nk.site
-  </p>
+        <h2>Contact</h2>
+        <p>If you have any questions, our team is here to help.</p>
+        <a href="mailto:support@bl1nk.site" class="btn-contact">support@bl1nk.site</a>
+    </main>
+
+    <footer>
+        &copy; 2026 bl1nkOS. Crafted with precision.
+    </footer>
 </body>
 </html>
